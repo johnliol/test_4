@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Questionnaire</title>
+
+<style>
+body{
+font-family:Arial;
+text-align:center;
+background:#ffeef2;
+margin-top:100px;
+}
+
+#questionBox{
+display:none;
+}
+
+button{
+font-size:20px;
+padding:10px 20px;
+margin:10px;
+cursor:pointer;
+}
+
+#no{
+position:relative;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Quick Questionnaire</h1>
+
+<div id="quiz">
+
+<p>1. Σου αρέσουν οι εκπλήξεις?</p>
+<select>
+<option>Yes</option>
+<option>No</option>
+</select>
+
+<p>2. θα έλεγες τον εαυτό σου αποφασιστικό?</p>
+<select>
+<option>Yes</option>
+<option>No</option>
+</select>
+
+<p>3. Είσαι καλά?</p>
+<select>
+<option>Maybe</option>
+<option>Yes</option>
+<option>No</option>
+</select>
+
+<br><br>
+
+<button onclick="showQuestion()">Submit</button>
+
+</div>
+
+<div id="questionBox">
+<h1>Sabbato 9:30 sto lobster katw apo to spiti sou? 😎</h1>
+<button onclick="yesClicked()">Yes</button>
+<button id="no" onmouseover="moveButton()">No</button>
+</div>
+
+<script>
+// Έλεγχος αν είναι κινητό
+if (/Mobi|Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    document.body.innerHTML = `
+    <h1>⚠️ Μικρό πρόβλημα</h1>
+    <p>Για κάποιο λόγο αυτό το quiz λειτουργεί μόνο σε υπολογιστή 😅</p>
+    <p>Άνοιξέ το από laptop ή desktop.</p>
+    `;
+}
+
+// Συνάρτηση για εμφάνιση ερώτησης
+function showQuestion(){
+    document.getElementById("quiz").style.display="none";
+    document.getElementById("questionBox").style.display="block";
+}
+
+// Συνάρτηση για κίνηση κουμπιού "No"
+function moveButton(){
+    let btn=document.getElementById("no");
+    let x=Math.random()*(window.innerWidth-100);
+    let y=Math.random()*(window.innerHeight-100);
+    btn.style.position="absolute";
+    btn.style.left=x+"px";
+    btn.style.top=y+"px";
+}
+
+// Συνάρτηση για "Yes"
+function yesClicked(){
+    document.body.innerHTML="<h1>teleia na eisai etoimh...😉!</h1>";
+}
+</script>
+
+</body>
+</html>
